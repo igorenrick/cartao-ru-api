@@ -1,0 +1,19 @@
+{
+  "name": "cartao-ru-api",
+  "version": "1.0.0",
+  "description": "api para ser consumida por sistema de controle de um ru",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/igorenrick/cartao-ru-api.git"
+  },
+  "author": "Igor Enrick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorenrick/cartao-ru-api/issues"
+  },
+  "homepage": "https://github.com/igorenrick/cartao-ru-api#readme"
+}

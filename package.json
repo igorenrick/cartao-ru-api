@@ -1,19 +1,28 @@
 {
   "name": "cartao-ru-api",
   "version": "1.0.0",
-  "description": "api para ser consumida por sistema de controle de um ru",
-  "main": "index.js",
+  "description": "trabalho de banco de dados",
+  "main": "src/index.js",
   "scripts": {
-    "test": "dev"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "env-cmd -f ./.env nodemon src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/igorenrick/cartao-ru-api.git"
+    "url": "git+https://github.com/igorenrick/cartao-ru-api.git"
   },
-  "author": "Igor Enrick",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/igorenrick/cartao-ru-api/issues"
   },
-  "homepage": "https://github.com/igorenrick/cartao-ru-api#readme"
+  "homepage": "https://github.com/igorenrick/cartao-ru-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "env-cmd": "^10.0.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.12",
+    "nodemon": "^2.0.1"
+  }
 }

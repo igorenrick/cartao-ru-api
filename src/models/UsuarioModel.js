@@ -64,8 +64,8 @@ UsuarioSchema.methods.generateAuthToken = async function() {
     return token
 }
 
-UsuarioSchema.statics.findByCredentials = async (email, senha) => {
-    const user = await User.findOne({ email })
+UsuarioSchema.statics.findByCredentials = async (matricula, senha) => {
+    const user = await User.findOne({ matricula })
     if (!user) {
         throw new Error({ error: 'Invalid login credentials' })
     }

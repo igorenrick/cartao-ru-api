@@ -10,9 +10,13 @@ const UsoController = require('./controllers/UsoController')
 const RecargaController = require('./controllers/RecargaController')
 const TransferenciaController = require('./controllers/TransferenciaController')
 
+
+const auth = require('./middlewares/auth')
+
 routes.get('/', UsuarioController.index)
 routes.get('/users', UsuarioController.list)
 routes.post('/users/register', UsuarioController.create)
+routes.post('/users/login', UsuarioController.login)
 
 routes.get('/cards', CartaoController.list)
 

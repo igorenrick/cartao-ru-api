@@ -17,6 +17,10 @@ module.exports = {
         }
     },
 
+    async profile(req, res, next) {
+        return res.send(req.user)
+    },
+
     async create(req, res, next) {
         try {
             const user = new Usuario(req.body)
@@ -47,7 +51,7 @@ module.exports = {
     async login(req, res, next) {
         try {
             const { matricula, senha } = req.body
-                        
+
             const user = await Usuario.findByCredentials(matricula, senha)
             console.log('User found. Matrícula: ' + user.matricula + " . Password: " + user.senha)
 

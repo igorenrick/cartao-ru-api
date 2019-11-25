@@ -20,7 +20,7 @@ routes.post('/users/login', UsuarioController.login)
 routes.get('/users/me', auth, UsuarioController.profile)
 
 routes.get('/cards', CartaoController.list)
-routes.get('/cards/get', CartaoController.get)
+routes.post('/cards/access', CartaoController.get)
 
 routes.get('/activities', AtividadeController.list)
 

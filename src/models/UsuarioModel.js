@@ -65,17 +65,23 @@ UsuarioSchema.methods.generateAuthToken = async function() {
 }
 
 UsuarioSchema.statics.findByCredentials = async (matricula, senha) => {
-    const user = await User.findOne({ matricula })
-    if (!user) {
+
+    console.log('Trying to find user to login. Matrícula: ' + matricula + " . Password: " + senha)
+
+    const usuario = await Usuario.findOne( { matricula }, (err) => { console.log(err) })
+
+    if (!usuario) {
         throw new Error({ error: 'Invalid login credentials' })
     }
 
-    const isPasswordMatch = await bcrypt.compare(senha, user.senha)
+    const isPasswordMatch = await bcrypt.compare(senha, usuario.senha)
 
     if (!isPasswordMatch) {
         throw new Error({ error: 'Invalid login credentials' })
     }
-    return user
+    return usuario
 }
 
-module.exports = mongoose.model('User', UsuarioSchema)
+const Usuario = mongoose.model('User', UsuarioSchema)
+
+module.exports = Usuario

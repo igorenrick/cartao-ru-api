@@ -37,7 +37,13 @@ const UsuarioSchema = new mongoose.Schema({
     atividade: {
         type: ObjectId,
         require: true
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
 
 UsuarioSchema.pre('save', async function (next) {

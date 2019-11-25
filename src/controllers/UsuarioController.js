@@ -42,5 +42,22 @@ module.exports = {
         } catch (error) {
             res.status(400).send(error)
         }
-    }
+    },
+
+    async login(req, res, next) {
+        try {
+            const { matricula, senha } = req.body
+            console.log('Trying to find user to login. Matrícula: ' + matricula + " . Password: " + senha)
+            
+            const user = await Usuario.findByCredentials(matricula, senha)
+
+            if (!user) {
+                return res.status(401).send({error: 'Login failed! Check authentication credentials.'})
+            }
+            const token = await user.generateAuthToken()
+            res.send({ user, token })
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
 }

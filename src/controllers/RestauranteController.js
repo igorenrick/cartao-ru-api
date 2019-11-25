@@ -2,9 +2,13 @@ const Restaurante = require('../models/RestauranteModel')
 
 module.exports = {
     async list(req, res, next) {
-        const restaurants = await Restaurante.find().sort('_id')
+        try {
+            const restaurants = await Restaurante.find().sort('_id')
 
-        return res.json(restaurants)
+            return res.json(restaurants)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     },
 
     async create(req, res, next) {

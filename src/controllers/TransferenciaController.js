@@ -5,9 +5,13 @@ const Atividade = require('../models/AtividadeModel')
 
 module.exports = {
     async list(req, res, next) {
-        const transferencias = await Transferencia.find().sort('_id')
+        try {
+            const transferencias = await Transferencia.find().sort('_id')
 
-        return res.json(transferencias)
+            return res.json(transferencias)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     },
     async create(req, res, next) {
         try {

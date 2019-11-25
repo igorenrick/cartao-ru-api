@@ -3,9 +3,13 @@ const Restaurante = require('../models/RestauranteModel')
 
 module.exports = {
     async list(req, res, next) {
-        const menus = await Cardapio.find().sort('_id')
+        try {
+            const menus = await Cardapio.find().sort('_id')
 
-        return res.json(menus)
+            return res.json(menus)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     },
 
     async create(req, res, next) {

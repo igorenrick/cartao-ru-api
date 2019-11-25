@@ -7,10 +7,14 @@ module.exports = {
         return res.json('Olá, Cartão RU!')
     },
 
-    async list(req, res, next) {
-        const users = await Usuario.find().sort('_id')
+    async list(req, res) {
+        try {
+            const users = await Usuario.find().sort('_id')
 
-        return res.json(users)
+            return res.json(users)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     },
 
     async create(req, res, next) {

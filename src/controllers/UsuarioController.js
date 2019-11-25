@@ -17,6 +17,18 @@ module.exports = {
         }
     },
 
+    async search(req, res) {
+        try {
+            console.log('Aqui ó')
+            const matricula = req.body.matricula
+            console.log('Matricula: ' + matricula.matricula)
+            const user = await Usuario.findOne({matricula})
+            return res.json(user)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
+
     async profile(req, res, next) {
         return res.send(req.user)
     },

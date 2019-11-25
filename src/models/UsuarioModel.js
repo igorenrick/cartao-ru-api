@@ -3,7 +3,19 @@ const mongoose = require('mongoose')
 var ObjectId = mongoose.Schema.Types.ObjectId
 
 const UsuarioSchema = new mongoose.Schema({
-    nome: {
+    primeironome: {
+        type: String,
+        require: true
+    },
+    segundonome: {
+        type: String,
+        require: true
+    },
+    curso: {
+        type: String,
+        require: true
+    },
+    senha: {
         type: String,
         require: true
     },

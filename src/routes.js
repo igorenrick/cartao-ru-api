@@ -17,6 +17,7 @@ routes.get('/', UsuarioController.index)
 routes.get('/users', UsuarioController.list)
 routes.post('/users/register', UsuarioController.create)
 routes.post('/users/login', UsuarioController.login)
+routes.post('/users/me/logout', auth, UsuarioController.logout)
 routes.get('/users/me', auth, UsuarioController.profile)
 routes.post('/users/find', UsuarioController.search)
 

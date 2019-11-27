@@ -25,6 +25,7 @@ routes.get('/cards', CartaoController.list)
 routes.post('/cards/access', CartaoController.get)
 
 routes.get('/activities', AtividadeController.list)
+routes.post('/activities/listuses', AtividadeController.listusos)
 
 routes.get('/restaurants', RestauranteController.list)
 routes.post('/restaurants/register', RestauranteController.create)

@@ -30,6 +30,21 @@ module.exports = {
         }
     },
 
+    async find(req, res) {
+        try {
+            console.log('Aqui ó')
+            const _id = req.body._id
+
+            const restaurante = await Restaurante.findById( { _id }, (err) => { console.log(err) })
+            
+            console.log('RESTAURANTE: ' + restaurante._id)
+
+            return res.json(restaurante)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
+
     async create(req, res, next) {
         try {
             const restaurant = new Restaurante(req.body)

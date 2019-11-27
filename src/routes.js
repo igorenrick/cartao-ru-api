@@ -30,6 +30,7 @@ routes.post('/activities/listuses', AtividadeController.listusos)
 routes.get('/restaurants', RestauranteController.list)
 routes.post('/restaurants/register', RestauranteController.create)
 routes.post('/restaurants/findUse', RestauranteController.findUse)
+routes.post('/restaurants/find', RestauranteController.find)
 
 routes.get('/menus', CardapioController.list)
 routes.post('/menus/new', CardapioController.create)

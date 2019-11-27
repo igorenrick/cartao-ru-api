@@ -15,13 +15,12 @@ module.exports = {
         try {
             console.log('Aqui ó')
             const _id = req.body._id
-            const creditos = req.body.creditos
 
             const restaurante = await Restaurante.findById( { _id }, (err) => { console.log(err) })
             
             console.log('RESTAURANTE: ' + restaurante._id)
 
-            restaurante.usos = restaurante.usos + creditos
+            restaurante.usos++
 
             await restaurante.save()
 

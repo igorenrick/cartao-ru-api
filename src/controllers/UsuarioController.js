@@ -17,7 +17,7 @@ module.exports = {
         }
     },
 
-    async search(req, res) {
+    async find(req, res) {
         try {
             console.log('Aqui ó')
             const matricula = req.body.matricula

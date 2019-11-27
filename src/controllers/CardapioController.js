@@ -57,9 +57,15 @@ module.exports = {
             
             const datahoje = ano + "-" + mes + "-" + dia + 'T03:00:00.000+00:00'
 
-            const cardapioDoDia = await Cardapio.find( {data: datahoje}, (err) => { console.log('ERRO: ' + err) })
+            const cardapioDoDia = await Cardapio.find( {data: '2019-11-25T03:00:00.000+00:00'}, (err) => { console.log('ERRO: ' + err) })
 
-            res.send(cardapioDoDia)
+            console.log('1: ' + cardapioDoDia.restaurante + ' 2: ' + _id)
+
+            console.log('AQUI: ' + cardapioDoDia)
+
+            if (cardapioDoDia.restaurante == _id) {
+                res.send(cardapioDoDia)
+            }
 
         } catch (error) {
             res.status(400).send(error)

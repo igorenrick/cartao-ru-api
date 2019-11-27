@@ -17,16 +17,21 @@ module.exports = {
         try {
             const recarga = new Recarga(req.body)
             const dono = await Usuario.findOne({_id: recarga.dono})
-            const cartao = await Cartao.findOne({_id: dono.cartao})
-            const atividade = await Atividade.findOne({_id: dono.atividade})
 
-            cartao.creditos = cartao.creditos + recarga.creditos
+            if(!dono.isento) {
+                const cartao = await Cartao.findOne({_id: dono.cartao})
+                const atividade = await Atividade.findOne({_id: dono.atividade})
 
-            atividade.recargas.push(recarga._id)
+                cartao.creditos = cartao.creditos + recarga.creditos
 
-            await atividade.save()
-            await cartao.save()
-            await recarga.save()
+                atividade.recargas.push(recarga._id)
+
+                await atividade.save()
+                await cartao.save()
+                await recarga.save()
+            } else{
+                recarga = 'Usuário isento. Não é possível fazer recargas nesta categoria.'
+            }
 
             res.status(201).send({ recarga })
         } catch (error) {

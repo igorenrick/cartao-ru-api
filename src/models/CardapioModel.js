@@ -2,6 +2,22 @@ const mongoose = require('mongoose')
 
 var ObjectId = mongoose.Schema.Types.ObjectId
 
+pegaData = () => {
+    const data = new Date()
+
+    const dia = data.getDate().toString()
+    if(dia.length == 1){ dia = '0' + dia }
+
+    const mes  = (data.getMonth() + 1).toString()
+    if(mes.length == 1){ mes = '0' + mes }
+
+    const ano = data.getFullYear()
+    
+    const datahoje = ano + "-" + mes + "-" + dia + 'T03:00:00.000+00:00'
+
+    return datahoje
+}
+
 const CardapioSchema = new mongoose.Schema({
     restaurante: {
         type: ObjectId,
@@ -10,7 +26,8 @@ const CardapioSchema = new mongoose.Schema({
     data: {
         type: Date,
         require: true,
-        default: Date.now
+        unique: true,
+        default: pegaData(),
     },
     almoco: {
         type: String,

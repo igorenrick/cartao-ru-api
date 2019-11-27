@@ -20,16 +20,19 @@ module.exports = {
 
             const dono = await Usuario.findOne({_id: uso.dono})
             const local = await Restaurante.findOne({_id: uso.local})
+            
             const cartao = await Cartao.findOne({_id: dono.cartao})
             const atividade = await Atividade.findOne({_id: dono.atividade})
 
-            cartao.creditos = cartao.creditos - uso.creditos
+            if(!dono.isento) {
+                cartao.creditos = cartao.creditos - uso.creditos
+            }
             local.usos = local.usos + uso.creditos
 
             atividade.usos.push(uso._id)
 
             await atividade.save()
-            await cartao.save()            
+            await cartao.save()
             await local.save()
             await uso.save()
 

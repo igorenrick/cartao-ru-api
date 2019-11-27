@@ -31,6 +31,7 @@ routes.post('/restaurants/register', RestauranteController.create)
 
 routes.get('/menus', CardapioController.list)
 routes.post('/menus/new', CardapioController.create)
+routes.post('/menus/find', CardapioController.get)
 
 routes.get('/uses', UsoController.list)
 routes.post('/uses/new', UsoController.create)

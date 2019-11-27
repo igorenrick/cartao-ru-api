@@ -43,29 +43,21 @@ module.exports = {
             console.log('CARDÁPIOS DO RESTAURANTE: ' + restaurante.cardapios)
 
             const data = new Date()
-            console.log('DATA CRIADA: ' + data)
-                const dia = data.getDate().toString()
-                if(dia.length == 1){
-                    dia = '0' + dia
-                }
-                console.log('DIA: ' + dia)
+            const dia = data.getDate().toString()
+            if(dia.length == 1){
+                dia = '0' + dia
+            }
 
-                const mes  = (data.getMonth() + 1).toString() //+1 pois no getMonth Janeiro começa com zero.
-                if(mes.length == 1){
-                    mes = '0' + mes
-                }      
-                console.log('MES: ' + mes)
+            const mes  = (data.getMonth() + 1).toString() //+1 pois no getMonth Janeiro começa com zero.
+            if(mes.length == 1){
+                mes = '0' + mes
+            }
 
-                const ano = data.getFullYear()
-                      console.log('ANO: ' + ano)
+            const ano = data.getFullYear()
             
             const datahoje = ano + "-" + mes + "-" + dia + 'T03:00:00.000+00:00'
-            
-            console.log('DATA HOJE: ' + datahoje)
 
-            const cardapioDoDia = await Cardapio.find( {data: '2019-11-25T03:00:00.000+00:00'}, (err) => { console.log('ERRO: ' + err) })
-
-            console.log('CARDAPIO DO DIA: '+ cardapioDoDia)
+            const cardapioDoDia = await Cardapio.find( {data: datahoje}, (err) => { console.log('ERRO: ' + err) })
 
             res.send(cardapioDoDia)
 

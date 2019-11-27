@@ -21,7 +21,7 @@ module.exports = {
             const usos = await Uso.find({dono: atividade.dono}).sort({'data': -1}).limit(3)
             console.log('Uso[0]: ' + usos)
 
-            return res.json(activities)
+            return res.json(usos)
         } catch (error) {
             res.status(400).send(error)
         }

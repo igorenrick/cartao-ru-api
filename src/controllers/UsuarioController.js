@@ -29,6 +29,17 @@ module.exports = {
         }
     },
 
+    async findbyid(req, res) {
+        try {
+            console.log('Aqui ó')
+            const _id = req.body
+            const user = await Usuario.findOne({_id})
+            return res.json(user)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
+
     async profile(req, res, next) {
         return res.send(req.user)
     },

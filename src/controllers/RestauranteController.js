@@ -11,14 +11,19 @@ module.exports = {
         }
     },
 
-    async find(req, res) {
+    async findUse(req, res) {
         try {
             console.log('Aqui ó')
             const _id = req.body._id
+            const creditos = req.body.creditos
 
             const restaurante = await Restaurante.findById( { _id }, (err) => { console.log(err) })
             
             console.log('RESTAURANTE: ' + restaurante._id)
+
+            restaurante.usos = restaurante.usos + creditos
+
+            await restaurante.save()
 
             return res.json(restaurante)
         } catch (error) {

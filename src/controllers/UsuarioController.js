@@ -123,5 +123,30 @@ module.exports = {
         } catch (error) {
             res.status(400).send(error)
         }
+    },
+
+    async update(req, res, next) {
+        console.log('no update')
+        try {
+            const dono = req.body
+            console.log('Dono id: ' + dono._id)
+            const _id = dono._id
+            const user = await Usuario.findById({_id})
+
+            console.log('USUARIO: ' + user.primeironome)
+
+            user.primeironome = dono.primeironome
+            user.segundonome = dono.segundonome
+            user.matricula = dono.matricula
+            user.curso = dono.curso
+            user.isento = dono.isento
+
+            await user.save()
+
+            res.send(user)
+            console.log('finalizada a atualizacao')
+        } catch (error) {
+            res.status(400).send(error)
+        }
     }
 }

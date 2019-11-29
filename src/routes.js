@@ -22,6 +22,7 @@ routes.get('/users/me', auth, UsuarioController.profile)
 routes.post('/users/find', UsuarioController.find)
 routes.post('/users/findbyid', UsuarioController.findbyid)
 routes.delete('/users/delete', UsuarioController.delete)
+routes.put('/users/me/update', UsuarioController.update)
 
 routes.get('/cards', CartaoController.list)
 routes.post('/cards/access', CartaoController.get)

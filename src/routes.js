@@ -21,6 +21,7 @@ routes.post('/users/me/logout', auth, UsuarioController.logout)
 routes.get('/users/me', auth, UsuarioController.profile)
 routes.post('/users/find', UsuarioController.find)
 routes.post('/users/findbyid', UsuarioController.findbyid)
+routes.delete('/users/delete', UsuarioController.delete)
 
 routes.get('/cards', CartaoController.list)
 routes.post('/cards/access', CartaoController.get)

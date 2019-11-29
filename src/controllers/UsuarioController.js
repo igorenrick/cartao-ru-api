@@ -1,6 +1,8 @@
 const Usuario = require('../models/UsuarioModel')
 const Cartao = require('../models/CartaoModel')
 const Atividade = require('../models/AtividadeModel')
+const Recargas = require('../models/RecargaModel')
+const Usos = require('../models/UsoModel')
 
 module.exports = {
     async index(req, res) {
@@ -96,7 +98,28 @@ module.exports = {
             await req.user.save()
             res.send()
         } catch (error) {
-            res.status(500).send(error)
+            res.status(400).send(error)
         }
     },
+
+    async delete(req, res, next) {
+        try {
+            console.log('No delete')
+            const _id = req.body
+            const user = await Usuario.findOne({_id})
+
+            console.log('USUARIO: ' + user.primeironome)
+
+            const cartao = await Cartao.deleteOne({_id: user.cartao})
+            const atividades = await Atividade.deleteOne({_id: user.atividade})
+            const recargas = await Recargas.deleteMany({dono: user._id})
+            const usos = await Usos.deleteMany({dono: user._id})
+
+            const userDelete = await Usuario.deleteOne({_id})
+
+            return res.json(userDelete, cartao, atividades, recargas, usos)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    }
 }

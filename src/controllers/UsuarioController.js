@@ -105,7 +105,7 @@ module.exports = {
     async delete(req, res, next) {
         try {
             console.log('No delete')
-            const _id = req.body
+            const _id = req.body._id
             const user = await Usuario.findById({_id})
 
             console.log('USUARIO: ' + user.primeironome)

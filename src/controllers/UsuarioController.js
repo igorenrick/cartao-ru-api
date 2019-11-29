@@ -106,7 +106,7 @@ module.exports = {
         try {
             console.log('No delete')
             const _id = req.body
-            const user = await Usuario.findOne({_id})
+            const user = await Usuario.findById({_id})
 
             console.log('USUARIO: ' + user.primeironome)
 

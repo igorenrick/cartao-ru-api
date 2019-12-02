@@ -5,7 +5,7 @@ var ObjectId = mongoose.Schema.Types.ObjectId
 pegaData = () => {
     const data = new Date()
 
-    const dia = data.getDate().toString()
+    var dia = data.getDate().toString()
     if(dia.length == 1){ dia = '0' + dia }
 
     const mes  = (data.getMonth() + 1).toString()
